@@ -13,7 +13,7 @@ import {EventDriverService} from '../../state/event.driver.service';
 export class ProductEditComponent implements OnInit {
   productId:number;
   productFormGroup?:FormGroup;
-  submitted:boolean=false;
+  submitted=false;
   constructor(private activatedRoute:ActivatedRoute,
               private productsService:ProductsService,
               private fb:FormBuilder, private eventDrivenService:EventDriverService) {
@@ -34,11 +34,11 @@ export class ProductEditComponent implements OnInit {
       });
   }
 
-  onUpdateProduct() {
+  onUpdateProduct():void {
     this.productsService.updateProduct(this.productFormGroup?.value)
       .subscribe(data=>{
         this.eventDrivenService.publishEvent({type:ProductActionsTypes.PRODUCT_UPDATED})
-        alert("Success Product updated");
+        alert("Success Product updated"+data);
       });
   }
 }

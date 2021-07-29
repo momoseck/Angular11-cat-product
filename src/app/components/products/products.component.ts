@@ -27,7 +27,7 @@ export class ProductsComponent implements OnInit {
      });
   }
 
-  onGetAllProducts() {
+  onGetAllProducts():void {
     this.products$= this.productsService.getAllProducts().pipe(
         map(data=>{
           console.log(data);
@@ -38,7 +38,7 @@ export class ProductsComponent implements OnInit {
       );
   }
 
-  onGetSelectedProducts() {
+  onGetSelectedProducts():void {
     this.products$= this.productsService.getSelectedProducts().pipe(
       map(data=>{
         console.log(data);
@@ -49,7 +49,7 @@ export class ProductsComponent implements OnInit {
     );
   }
 
-  onGetAvailableProducts() {
+  onGetAvailableProducts():void {
     this.products$= this.productsService.getAvailableProducts().pipe(
       map(data=>{
         console.log(data);
@@ -60,7 +60,9 @@ export class ProductsComponent implements OnInit {
     );
   }
 
-  onSearch(dataForm: any) {
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  onSearch(dataForm: any):void {
     this.products$= this.productsService.searchProducts(dataForm.keyword).pipe(
       map(data=>{
         console.log(data);
@@ -71,31 +73,32 @@ export class ProductsComponent implements OnInit {
     );
   }
 
-  onSelect(p: Product) {
+  onSelect(p: Product):void {
     this.productsService.select(p)
       .subscribe(data=>{
         p.selected=data.selected;
       })
   }
 
-  onDelete(p: Product) {
-     let v=confirm("Etes vous sûre?");
+  onDelete(p: Product):void {
+     const v=confirm("Etes vous sûre?");
      if(v==true)
     this.productsService.deleteProduct(p)
       .subscribe(data=>{
         this.onGetAllProducts();
+        console.log(data);
       })
   }
 
-  onNewProduct() {
+  onNewProduct():void {
     this.router.navigateByUrl("/newProduct");
   }
 
-  onEdit(p: Product) {
+  onEdit(p: Product):void {
     this.router.navigateByUrl("/editProduct/"+p.id);
   }
 
-  onActionEvent($event: ActionEvent) {
+  onActionEvent($event: ActionEvent):void {
     switch ($event.type) {
       case ProductActionsTypes.GET_ALL_PRODUCTS: this.onGetAllProducts();break;
       case ProductActionsTypes.GET_SELECTED_PRODUCTS: this.onGetSelectedProducts();break;

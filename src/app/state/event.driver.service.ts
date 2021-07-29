@@ -10,7 +10,7 @@ export class EventDriverService {
   sourceEventSubject2:Subject<ActionEvent>=new Subject<ActionEvent>();
   sourceEventSubjectObservable2=this.sourceEventSubject.asObservable();
 
-  publishEvent(event:ActionEvent){
+  publishEvent(event:ActionEvent) :void{
     this.sourceEventSubject.next(event);
   }
 }

@@ -8,7 +8,7 @@ import {ActionEvent} from '../../state/product.state';
   styleUrls: ['./stats.component.css']
 })
 export class StatsComponent implements OnInit {
-  counter:number=0;
+  counter=0;
   constructor(private eventDrivenService:EventDriverService) { }
 
   ngOnInit(): void {

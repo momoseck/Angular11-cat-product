@@ -12,7 +12,7 @@ import {ProductActionsTypes} from '../../state/product.state';
 export class ProductAddComponent implements OnInit {
 
   productFormGroup?:FormGroup;
-  submitted:boolean=false;
+  submitted=false;
 
   constructor(
     private fb:FormBuilder, private productsService:ProductsService,
@@ -30,13 +30,13 @@ export class ProductAddComponent implements OnInit {
     });
   }
 
-  onSaveProduct() {
+  onSaveProduct():void {
     this.submitted=true;
     if(this.productFormGroup?.invalid) return;
     this.productsService.save(this.productFormGroup?.value)
       .subscribe(data=>{
         this.eventDrivenService.publishEvent({type:ProductActionsTypes.PRODUCT_ADDED})
-        alert("Success Saving product");
+        alert("Success Saving product"+data);
       });
   }
 }

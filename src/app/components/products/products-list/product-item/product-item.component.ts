@@ -1,6 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Product} from '../../../../model/product.model';
-import {ActionEvent, ProductActionsTypes} from '../../../../state/product.state';
+import {ProductActionsTypes} from '../../../../state/product.state';
 import {EventDriverService} from '../../../../state/event.driver.service';
 
 @Component({
@@ -15,20 +15,21 @@ export class ProductItemComponent implements OnInit {
 
   constructor(private eventDrivenService:EventDriverService) { }
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   ngOnInit(): void {
   }
 
-  onSelect(product: Product) {
+  onSelect(product: Product):void {
     //this.eventEmitter.emit({type:ProductActionsTypes.SELECT_PRODUCT,payload:product});
     this.eventDrivenService.publishEvent({type:ProductActionsTypes.SELECT_PRODUCT,payload:product});
   }
 
-  onDelete(product: Product) {
+  onDelete(product: Product):void {
     //this.eventEmitter.emit({type:ProductActionsTypes.DELETE_PRODUCT,payload:product});
     this.eventDrivenService.publishEvent({type:ProductActionsTypes.DELETE_PRODUCT,payload:product});
   }
 
-  onEdit(product: Product) {
+  onEdit(product: Product):void {
    // this.eventEmitter.emit({type:ProductActionsTypes.EDIT_PRODUCT,payload:product});
     this.eventDrivenService.publishEvent({type:ProductActionsTypes.EDIT_PRODUCT,payload:product});
   }

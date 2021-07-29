@@ -1,5 +1,5 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {ActionEvent, ProductActionsTypes} from '../../../state/product.state';
+import {Component, OnInit} from '@angular/core';
+import { ProductActionsTypes} from '../../../state/product.state';
 import {EventDriverService} from '../../../state/event.driver.service';
 
 @Component({
@@ -12,32 +12,32 @@ export class ProductsNavBarComponent implements OnInit {
   //@Output() productEventEmitter : EventEmitter<ActionEvent> =new EventEmitter();
 
   constructor(private eventDrivenService:EventDriverService) { }
-
+// eslint-disable-next-line @typescript-eslint/no-empty-function
   ngOnInit(): void {
   }
 
-  onGetSelectedProducts() {
+  onGetSelectedProducts() :void{
     //this.productEventEmitter.emit({type:ProductActionsTypes.GET_SELECTED_PRODUCTS});
     this.eventDrivenService.publishEvent({type:ProductActionsTypes.GET_SELECTED_PRODUCTS});
   }
 
-  onGetAllProducts() {
+  onGetAllProducts():void {
     //this.productEventEmitter.emit({type:ProductActionsTypes.GET_ALL_PRODUCTS});
     this.eventDrivenService.publishEvent({type:ProductActionsTypes.GET_ALL_PRODUCTS});
   }
 
-  onGetAvailableProducts() {
+  onGetAvailableProducts():void {
     //this.productEventEmitter.emit({type:ProductActionsTypes.GET_AVAILABLE_PRODUCTS});
     this.eventDrivenService.publishEvent({type:ProductActionsTypes.GET_AVAILABLE_PRODUCTS});
   }
 
-  onNewProduct() {
+  onNewProduct() :void{
 
     //this.productEventEmitter.emit({type:ProductActionsTypes.NEW_PRODUCT});
     this.eventDrivenService.publishEvent({type:ProductActionsTypes.NEW_PRODUCT});
   }
 
-  onSearch(dataForm: any) {
+  onSearch(dataForm: string):void {
     /*
     this.productEventEmitter.emit(
       {type:ProductActionsTypes.SEARCH_PRODUCTS, payload:dataForm}

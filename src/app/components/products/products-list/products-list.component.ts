@@ -1,8 +1,7 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
-import {ActionEvent, AppDataState, DataStateEnum, ProductActionsTypes} from '../../../state/product.state';
+import {AppDataState, DataStateEnum} from '../../../state/product.state';
 import {Product} from '../../../model/product.model';
-import {$e} from 'codelyzer/angular/styles/chars';
 
 @Component({
   selector: 'app-products-list',
@@ -15,9 +14,9 @@ export class ProductsListComponent implements OnInit {
   //@Output() productsEventEmitter:EventEmitter<ActionEvent> =new EventEmitter<ActionEvent>();
 
   readonly DataStateEnum=DataStateEnum;
-
+// eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor() { }
-
+// eslint-disable-next-line @typescript-eslint/no-empty-function
   ngOnInit(): void {
   }
 
